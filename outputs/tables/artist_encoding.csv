@@ -1,0 +1,3 @@
+split,rmse_with_artist_mean,test_rows_with_known_artist
+random rows,19.92175680290872,0.7115860120098905
+artist-disjoint,22.00240280285315,0.0

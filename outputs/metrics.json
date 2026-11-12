@@ -1,0 +1,546 @@
+{
+  "data": {
+    "raw_rows": 32833,
+    "tracks": 28352,
+    "artists": 10692,
+    "train": 17079,
+    "val": 5346,
+    "test": 5927,
+    "hit_threshold": 65,
+    "hit_rate": {
+      "train": 0.1566,
+      "val": 0.1551,
+      "test": 0.149
+    },
+    "zero_popularity_share": 0.0923
+  },
+  "range_selection": {
+    "metric": "mean pinball loss at q10/q50/q90, validation",
+    "losses": {
+      "mean_only": 5.9114,
+      "genre_mean": 5.7743,
+      "ridge": 5.6245,
+      "hgb_gaussian": 5.2896,
+      "hgb_quantile": 5.1177,
+      "ngboost_normal": 5.2365
+    },
+    "best": "hgb_quantile",
+    "best_loss": 5.1177,
+    "se": 0.0379,
+    "pick_loss": 5.1177,
+    "shipped": "hgb_quantile"
+  },
+  "range_test": {
+    "mean_only": {
+      "rmse": 23.4428,
+      "mae": 19.6534,
+      "pinball": 5.8769,
+      "coverage_80": 0.7459,
+      "width_80": 61.0516,
+      "interval_score": 78.041,
+      "auc_rank_by_mean": 0.5,
+      "crps": 13.5526
+    },
+    "genre_mean": {
+      "rmse": 22.8698,
+      "mae": 19.1265,
+      "pinball": 5.721,
+      "coverage_80": 0.754,
+      "width_80": 59.8229,
+      "interval_score": 75.997,
+      "auc_rank_by_mean": 0.6404,
+      "crps": 13.1923
+    },
+    "ridge": {
+      "rmse": 22.3205,
+      "mae": 18.6353,
+      "pinball": 5.5834,
+      "coverage_80": 0.7722,
+      "width_80": 58.0883,
+      "interval_score": 74.3258,
+      "auc_rank_by_mean": 0.6905,
+      "crps": 12.852
+    },
+    "hgb_gaussian": {
+      "rmse": 21.1794,
+      "mae": 17.6246,
+      "pinball": 5.28,
+      "coverage_80": 0.7842,
+      "width_80": 54.5776,
+      "interval_score": 70.2782,
+      "auc_rank_by_mean": 0.7372,
+      "crps": 12.1705
+    },
+    "hgb_quantile": {
+      "rmse": 21.5713,
+      "mae": 17.4861,
+      "pinball": 5.1327,
+      "coverage_80": 0.7737,
+      "width_80": 56.9072,
+      "interval_score": 66.5499,
+      "auc_rank_by_mean": 0.7474
+    },
+    "ngboost_normal": {
+      "rmse": 21.2713,
+      "mae": 17.7362,
+      "pinball": 5.2406,
+      "coverage_80": 0.7537,
+      "width_80": 51.651,
+      "interval_score": 68.5369,
+      "auc_rank_by_mean": 0.7295,
+      "crps": 12.1384
+    }
+  },
+  "range_ci": {
+    "pinball_gain_vs_mean_only": [
+      0.7442,
+      0.6526,
+      0.8297
+    ],
+    "pinball_gain_vs_ridge": [
+      0.4507,
+      0.3704,
+      0.5136
+    ],
+    "rmse": [
+      21.5713,
+      20.9515,
+      22.2551
+    ]
+  },
+  "hit_selection": {
+    "metric": "log loss, validation",
+    "losses": {
+      "base_rate": 0.4314,
+      "genre_logit": 0.408,
+      "logistic": 0.3914,
+      "hgb_classifier": 0.3768,
+      "ngboost_tail": 0.3815
+    },
+    "shipped": "hgb_classifier",
+    "se": 0.0081
+  },
+  "hit_test": {
+    "base_rate": {
+      "auc": 0.5,
+      "log_loss": 0.4212,
+      "ece": 0.0076
+    },
+    "genre_logit": {
+      "auc": 0.6483,
+      "log_loss": 0.4005,
+      "ece": 0.0147
+    },
+    "logistic": {
+      "auc": 0.722,
+      "log_loss": 0.3805,
+      "ece": 0.0121
+    },
+    "hgb_classifier": {
+      "auc": 0.7703,
+      "log_loss": 0.3603,
+      "ece": 0.0107
+    },
+    "ngboost_tail": {
+      "auc": 0.7658,
+      "log_loss": 0.3655,
+      "ece": 0.0288
+    }
+  },
+  "hit_auc_ci": [
+    0.7703,
+    0.7488,
+    0.7898
+  ],
+  "interval_reliability": {
+    "levels": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "hgb_gaussian": [
+      0.4496,
+      0.5488,
+      0.6673,
+      0.7842,
+      0.917
+    ],
+    "ngboost_normal": [
+      0.411,
+      0.5067,
+      0.6219,
+      0.7537,
+      0.9087
+    ],
+    "ridge": [
+      0.4567,
+      0.5564,
+      0.6582,
+      0.7722,
+      0.9143
+    ]
+  },
+  "audit": {
+    "protocols": [
+      {
+        "protocol": "random rows, repeats kept",
+        "rmse": 22.111,
+        "skill": 0.2238,
+        "n_test": 6547
+      },
+      {
+        "protocol": "random rows, repeats removed",
+        "rmse": 21.5465,
+        "skill": 0.1836,
+        "n_test": 5662
+      },
+      {
+        "protocol": "artist-disjoint",
+        "rmse": 21.1794,
+        "skill": 0.1838,
+        "n_test": 5927
+      },
+      {
+        "protocol": "forward in time",
+        "rmse": 19.742,
+        "skill": 0.1756,
+        "n_test": 5976
+      }
+    ],
+    "artist_encoding": [
+      {
+        "split": "random rows",
+        "rmse_with_artist_mean": 19.9218,
+        "test_rows_with_known_artist": 0.7116
+      },
+      {
+        "split": "artist-disjoint",
+        "rmse_with_artist_mean": 22.0024,
+        "test_rows_with_known_artist": 0.0
+      }
+    ],
+    "feature_blocks": [
+      {
+        "feature_set": "all features",
+        "rmse": 21.1794,
+        "skill": 0.1838,
+        "n_test": 5927
+      },
+      {
+        "feature_set": "no release year",
+        "rmse": 22.0777,
+        "skill": 0.1131,
+        "n_test": 5927
+      },
+      {
+        "feature_set": "no genre",
+        "rmse": 21.7202,
+        "skill": 0.1416,
+        "n_test": 5927
+      },
+      {
+        "feature_set": "audio only",
+        "rmse": 22.6001,
+        "skill": 0.0706,
+        "n_test": 5927
+      },
+      {
+        "feature_set": "release year and genre only",
+        "rmse": 21.9148,
+        "skill": 0.1261,
+        "n_test": 5927
+      }
+    ],
+    "permutation_top": [
+      {
+        "feature": "release_year",
+        "pinball_increase": 0.6096,
+        "sd": 0.0303
+      },
+      {
+        "feature": "playlist_genre",
+        "pinball_increase": 0.2857,
+        "sd": 0.0154
+      },
+      {
+        "feature": "loudness",
+        "pinball_increase": 0.1145,
+        "sd": 0.0085
+      },
+      {
+        "feature": "instrumentalness",
+        "pinball_increase": 0.1,
+        "sd": 0.0073
+      },
+      {
+        "feature": "energy",
+        "pinball_increase": 0.0724,
+        "sd": 0.007
+      },
+      {
+        "feature": "danceability",
+        "pinball_increase": 0.0284,
+        "sd": 0.0056
+      }
+    ],
+    "groups": [
+      {
+        "group": "genre",
+        "value": "pop",
+        "n": 1077,
+        "rmse": 22.3065,
+        "coverage_80": 0.7948,
+        "mean_predicted_hit": 0.259,
+        "observed_hit": 0.2776
+      },
+      {
+        "group": "genre",
+        "value": "rap",
+        "n": 1053,
+        "rmse": 21.1545,
+        "coverage_80": 0.8063,
+        "mean_predicted_hit": 0.163,
+        "observed_hit": 0.1311
+      },
+      {
+        "group": "genre",
+        "value": "rock",
+        "n": 879,
+        "rmse": 23.7891,
+        "coverage_80": 0.7622,
+        "mean_predicted_hit": 0.1613,
+        "observed_hit": 0.149
+      },
+      {
+        "group": "genre",
+        "value": "latin",
+        "n": 826,
+        "rmse": 21.6236,
+        "coverage_80": 0.8075,
+        "mean_predicted_hit": 0.1781,
+        "observed_hit": 0.1683
+      },
+      {
+        "group": "genre",
+        "value": "r&b",
+        "n": 1009,
+        "rmse": 21.9475,
+        "coverage_80": 0.7711,
+        "mean_predicted_hit": 0.1152,
+        "observed_hit": 0.1298
+      },
+      {
+        "group": "genre",
+        "value": "edm",
+        "n": 1083,
+        "rmse": 18.7596,
+        "coverage_80": 0.7073,
+        "mean_predicted_hit": 0.0402,
+        "observed_hit": 0.0416
+      },
+      {
+        "group": "era",
+        "value": "2019 on",
+        "n": 1676,
+        "rmse": 17.0958,
+        "coverage_80": 0.778,
+        "mean_predicted_hit": 0.1813,
+        "observed_hit": 0.1772
+      },
+      {
+        "group": "era",
+        "value": "2018",
+        "n": 598,
+        "rmse": 22.308,
+        "coverage_80": 0.7542,
+        "mean_predicted_hit": 0.1724,
+        "observed_hit": 0.1672
+      },
+      {
+        "group": "era",
+        "value": "2015-17",
+        "n": 1240,
+        "rmse": 23.6634,
+        "coverage_80": 0.7855,
+        "mean_predicted_hit": 0.1392,
+        "observed_hit": 0.1508
+      },
+      {
+        "group": "era",
+        "value": "before 2015",
+        "n": 2413,
+        "rmse": 22.9972,
+        "coverage_80": 0.7696,
+        "mean_predicted_hit": 0.1324,
+        "observed_hit": 0.1239
+      }
+    ]
+  },
+  "neighbors": {
+    "table": [
+      {
+        "index": "brute force",
+        "build_s": 0.0006,
+        "query_s": 0.1024,
+        "recall_at_10": 1.0,
+        "queries_per_s": 29288.9367
+      },
+      {
+        "index": "kd-tree",
+        "build_s": 0.0237,
+        "query_s": 0.3111,
+        "recall_at_10": 0.9987,
+        "queries_per_s": 9641.7307
+      },
+      {
+        "index": "hnsw (ef=16)",
+        "build_s": 1.7616,
+        "query_s": 0.0251,
+        "recall_at_10": 0.9882,
+        "queries_per_s": 119687.1951
+      },
+      {
+        "index": "hnsw (ef=64)",
+        "build_s": 1.7116,
+        "query_s": 0.0961,
+        "recall_at_10": 0.9985,
+        "queries_per_s": 31209.0612
+      },
+      {
+        "index": "hnsw (ef=256)",
+        "build_s": 1.8446,
+        "query_s": 0.3119,
+        "recall_at_10": 0.9987,
+        "queries_per_s": 9619.723
+      },
+      {
+        "index": "nn-descent",
+        "build_s": 24.6573,
+        "query_s": 0.0186,
+        "recall_at_10": 0.9397,
+        "queries_per_s": 161640.8137
+      }
+    ],
+    "knn20_rmse": 23.1714,
+    "n_queries": 3000,
+    "train_points": 17079,
+    "dims": 11
+  },
+  "economics": {
+    "assumptions": {
+      "cost_per_promoted": 2500.0,
+      "value_per_hit": 10000.0,
+      "break_even_precision": 0.25
+    },
+    "share_chosen_on_validation": 0.3,
+    "policies": {
+      "model": {
+        "net_per_1000": 189809.0,
+        "ci": [
+          87349.0,
+          290455.0
+        ],
+        "precision": 0.3133
+      },
+      "genre_rule": {
+        "net_per_1000": -58208.0,
+        "ci": [
+          -170214.0,
+          50035.0
+        ],
+        "precision": 0.2306
+      },
+      "random": {
+        "net_per_1000": -302851.0,
+        "ci": [
+          -374616.0,
+          -236679.0
+        ],
+        "precision": 0.149
+      },
+      "model_minus_genre_rule": [
+        248018.0,
+        167168.0,
+        325745.0
+      ]
+    },
+    "hindsight_net_per_1000": 739835.0,
+    "sensitivity": [
+      {
+        "value_per_hit": 5000,
+        "cost": 1500,
+        "model": 19909.0,
+        "genre_rule": -104100.0
+      },
+      {
+        "value_per_hit": 5000,
+        "cost": 2500,
+        "model": -280074.0,
+        "genre_rule": -404083.0
+      },
+      {
+        "value_per_hit": 5000,
+        "cost": 4000,
+        "model": -730049.0,
+        "genre_rule": -854058.0
+      },
+      {
+        "value_per_hit": 7500,
+        "cost": 1500,
+        "model": 254851.0,
+        "genre_rule": 68838.0
+      },
+      {
+        "value_per_hit": 7500,
+        "cost": 2500,
+        "model": -45132.0,
+        "genre_rule": -231146.0
+      },
+      {
+        "value_per_hit": 7500,
+        "cost": 4000,
+        "model": -495107.0,
+        "genre_rule": -681120.0
+      },
+      {
+        "value_per_hit": 10000,
+        "cost": 1500,
+        "model": 489792.0,
+        "genre_rule": 241775.0
+      },
+      {
+        "value_per_hit": 10000,
+        "cost": 2500,
+        "model": 189809.0,
+        "genre_rule": -58208.0
+      },
+      {
+        "value_per_hit": 10000,
+        "cost": 4000,
+        "model": -260165.0,
+        "genre_rule": -508183.0
+      },
+      {
+        "value_per_hit": 15000,
+        "cost": 1500,
+        "model": 959676.0,
+        "genre_rule": 587650.0
+      },
+      {
+        "value_per_hit": 15000,
+        "cost": 2500,
+        "model": 659693.0,
+        "genre_rule": 287667.0
+      },
+      {
+        "value_per_hit": 15000,
+        "cost": 4000,
+        "model": 209718.0,
+        "genre_rule": -162308.0
+      }
+    ]
+  },
+  "runtime_seconds": 100.2
+}
