@@ -1,0 +1,11 @@
+gradio==6.31.0
+hnswlib==0.8.0
+joblib==1.6.0
+matplotlib==3.11.2
+ngboost==0.5.11
+numpy==2.5.3
+pandas==2.3.3
+properscoring==0.1
+pynndescent==0.7.0
+scikit-learn==1.9.1
+scipy==1.18.1

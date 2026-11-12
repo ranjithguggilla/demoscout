@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "demoscout"
+version = "0.1.0"
+description = "Probabilistic screening of new releases from audio features, with honest validation on unseen artists."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Ranjith Guggilla", email = "ranjithguggilla668@gmail.com" }]
+dependencies = [
+  "numpy", "pandas", "scipy", "scikit-learn", "ngboost", "properscoring",
+  "hnswlib", "pynndescent", "matplotlib", "joblib", "gradio",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "ruff"]
+
+[project.scripts]
+demoscout = "demoscout.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+filterwarnings = ["ignore::SyntaxWarning", "ignore::DeprecationWarning", "ignore::FutureWarning", "ignore::UserWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
