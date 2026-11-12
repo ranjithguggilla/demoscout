@@ -13,9 +13,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-          cache: pip
-      - run: pip install -r requirements.txt -r requirements-dev.txt
-      - run: pip install -e . --no-deps
+          # No pip cache: hnswlib wheels built with -march=native on one runner
+          # can SIGILL when restored on a weaker-CPU runner.
+      - name: Install
+        env:
+          HNSWLIB_NO_NATIVE: "1"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt --no-binary=hnswlib
+          pip install -e . --no-deps
       - run: ruff check .
       - run: pytest -q --cov=demoscout
 
@@ -28,9 +34,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-          cache: pip
-      - run: pip install -r requirements.txt
-      - run: pip install -e . --no-deps
+      - name: Install
+        env:
+          HNSWLIB_NO_NATIVE: "1"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt --no-binary=hnswlib
+          pip install -e . --no-deps
       - run: demoscout run --boot 100
       - uses: actions/upload-artifact@v4
         with:
