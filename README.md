@@ -142,7 +142,7 @@ Timings come from a 2-core machine and will differ on yours. Recall values will 
 
 ## Installation
 
-Python 3.11 or newer. I developed on 3.13.
+Python 3.12 or newer. I developed on 3.13.
 
 ```
 git clone https://github.com/ranjithguggilla/demoscout.git

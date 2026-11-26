@@ -7,7 +7,7 @@ name = "demoscout"
 version = "0.1.0"
 description = "Probabilistic screening of new releases from audio features, with honest validation on unseen artists."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "Ranjith Guggilla", email = "ranjithguggilla668@gmail.com" }]
 dependencies = [
@@ -31,7 +31,7 @@ filterwarnings = ["ignore::SyntaxWarning", "ignore::DeprecationWarning", "ignore
 
 [tool.ruff]
 line-length = 120
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
